@@ -2,7 +2,7 @@
 
 ## What is it?
 
-filex 的 Windows 11 原生 Rust TUI 版本，与 `../fileX` 并列维护。横向连接目录树，支持目录／直属文件分组树、搜索、预览、创建、重命名、复制、移动和回收站删除。CMD、PowerShell 与 Git Bash 可用同一个 `.exe`。
+filex 的 Windows 11 原生 Rust TUI 版本，与 `../filex` 并列维护。横向连接目录树，支持目录／直属文件分组树、搜索、预览、创建、重命名、复制、移动和回收站删除。CMD、PowerShell 与 Git Bash 可用同一个 `.exe`。
 
 Windows 接口、限制和验证记录见 [description.md](description.md)。
 
@@ -29,7 +29,7 @@ Windows 接口、限制和验证记录见 [description.md](description.md)。
 | CMD | `C:\path\win-filex\filex.cmd`；批处理内使用 `call` |
 | Git Bash | `source /c/path/win-filex/shell/filex.bash`，然后 `filex`；可将 source 行加入 `~/.bashrc` |
 
-Git Bash 在 Windows Terminal 中直接运行；传统 mintty 优先自动使用随 Git for Windows 提供的 `winpty`。WSL Bash 请使用 `../fileX` 的 Linux 版本。直接执行 `.exe` 也能浏览，但 `x` 会进入子 CMD；使用对应 shell 包装脚本，`x` 才能切换原终端目录。
+Git Bash 在 Windows Terminal 中直接运行；传统 mintty 优先自动使用随 Git for Windows 提供的 `winpty`。WSL Bash 请使用 `../filex` 的 Linux 版本。直接执行 `.exe` 也能浏览，但 `x` 会进入子 CMD；使用对应 shell 包装脚本，`x` 才能切换原终端目录。
 
 - `↑/↓` 同层选择并首尾循环；`→` 展开／进入子级，`←` 返回父级；保持其他分支展开。`Enter` 展开目录或为文件选择打开方式。
 - 默认同级垂直罗列；`v` 将直属文件分组／恢复普通树；O 排序，z 隐藏，Z 管理恢复。`Space` 标记多个文件／目录，显示亮洋红方框；`c/m` 后方向键选目标目录、Enter 执行。展开目录首位的 `+` 可选中按 Enter 直接放入待复制／移动的项目，`+` 键也可放入当前目标目录；`A` 新建目标子目录，创建后再 Enter 放入。Esc 取消待执行操作，再按一次清空标记。已有普通文件需再次 Enter 确认替换；目录／链接冲突或整批重名则拒绝操作。
@@ -112,3 +112,7 @@ Ctrl+F（或 `/`）输入关键词并 Enter 后进入搜索模式：↑／↓ �
 2026-10-25 逐级聚焦：每个直接父目录分别保存聚焦项，多个层级和独立分支可同时生效；在已聚焦项上按 F 清除该项及所有后代的聚焦，保留其他分支。刷新分别清理失效记录，更换根目录清空全部，不写入配置。两产品各 57 项 Rust 测试及 4 项 Linux 实际 PTY 聚焦检查通过，覆盖嵌套、独立分支、父级解除联动、搜索、刷新、删除、传输和配置不变。Linux / Windows release 已构建，Windows 测试程序交叉编译通过，未实机验证。
 
 2026-10-25 mv/cp 放入位置置顶：目标选择模式中，每个已展开目录的虚拟 + 固定为首项，刷新、新展开目录和分组树均保持；右键进入后可直接选中 +，Enter 放入该目录。退出传输模式移除虚拟项，实际文件排序不变。两产品各 57 项 Rust 测试通过，Linux 6 项实际 PTY 光标操作检查通过（含已有文件／子目录的目标目录、复制、移动、覆盖和取消）；Linux 与 Windows release 已构建，Windows 未实机验证。
+
+## 独立仓库迁移（2026-10-27）
+
+源码及本地数据迁至 `/home/a/Documents/products/filex-win`，已有提交历史保留。现在使用本项目自己的 `.git` 和 `origin` 独立提交、推送；不再通过 `someProducts` 的 push hook 发布。本次目录／仓库重命名保留配置目录、应用名称和已有用户数据。

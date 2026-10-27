@@ -5,7 +5,7 @@ filex() {
     filex_exe="$filex_root/bin/filex.exe"
     [[ -f "$filex_exe" ]] || filex_exe="$filex_root/target/release/filex.exe"
     [[ -f "$filex_exe" ]] || { printf 'filex: run scripts/build.ps1 first\n' >&2; return 1; }
-    command -v cygpath >/dev/null || { printf 'filex: this wrapper requires Git Bash (WSL: use ../fileX)\n' >&2; return 1; }
+    command -v cygpath >/dev/null || { printf 'filex: this wrapper requires Git Bash (WSL: use ../filex)\n' >&2; return 1; }
     filex_cwd="$(mktemp)" || return
     local -a filex_runner=()
     if [[ -t 0 && -t 1 && -z ${WT_SESSION:-} && -n ${MSYSTEM:-} ]] && command -v winpty >/dev/null; then filex_runner=(winpty); fi

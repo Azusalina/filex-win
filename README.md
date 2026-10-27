@@ -2,7 +2,7 @@
 
 ## What is it?
 
-filex 的 Windows 11 原生 Rust TUI 版本，与 `../fileX` 并列维护。横向连接目录树，支持目录／直属文件分组树、搜索、预览、创建、重命名、复制、移动和回收站删除。CMD、PowerShell 与 Git Bash 可用同一个 `.exe`。
+filex 的 Windows 11 原生 Rust TUI 版本，与 `../filex` 并列维护。横向连接目录树，支持目录／直属文件分组树、搜索、预览、创建、重命名、复制、移动和回收站删除。CMD、PowerShell 与 Git Bash 可用同一个 `.exe`。
 
 Windows 接口、限制和验证记录见 [description.md](description.md)。
 
@@ -29,7 +29,7 @@ Windows 接口、限制和验证记录见 [description.md](description.md)。
 | CMD | `C:\path\win-filex\filex.cmd`；批处理内使用 `call` |
 | Git Bash | `source /c/path/win-filex/shell/filex.bash`，然后 `filex`；可将 source 行加入 `~/.bashrc` |
 
-Git Bash 在 Windows Terminal 中直接运行；传统 mintty 优先自动使用随 Git for Windows 提供的 `winpty`。WSL Bash 请使用 `../fileX` 的 Linux 版本。直接执行 `.exe` 也能浏览，但 `x` 会进入子 CMD；使用对应 shell 包装脚本，`x` 才能切换原终端目录。
+Git Bash 在 Windows Terminal 中直接运行；传统 mintty 优先自动使用随 Git for Windows 提供的 `winpty`。WSL Bash 请使用 `../filex` 的 Linux 版本。直接执行 `.exe` 也能浏览，但 `x` 会进入子 CMD；使用对应 shell 包装脚本，`x` 才能切换原终端目录。
 
 - `↑/↓` 同层选择并首尾循环；`→` 展开／进入子级，`←` 返回父级；保持其他分支展开。`Enter` 展开目录或为文件选择打开方式。
 - 默认同级垂直罗列；`v` 将直属文件分组／恢复普通树；O 排序，z 隐藏，Z 管理恢复。`Space` 标记多个文件／目录，显示亮洋红方框；`c/m` 后方向键选目标目录、Enter 执行。展开目录首位的 `+` 可选中按 Enter 直接放入待复制／移动的项目，`+` 键也可放入当前目标目录；`A` 新建目标子目录，创建后再 Enter 放入。Esc 取消待执行操作，再按一次清空标记。已有普通文件需再次 Enter 确认替换；目录／链接冲突或整批重名则拒绝操作。
@@ -102,3 +102,5 @@ Ctrl+F（或 `/`）输入关键词并 Enter 后进入搜索模式：↑／↓ �
 **F 临时聚焦**：选中文件／文件夹按 F，仅在该项的直接父目录内隐藏其他同级项，保留该项及其展开内容；父目录及更高祖先的其他分支照常显示和导航，↑↓ 跳过被隐藏项；各父目录可分别聚焦并叠加；在已聚焦项上再按 F，恢复该级并清除其全部子级聚焦，其他分支的聚焦保留。保留原根目录、展开状态、多选及排序，不修改 excluded_paths，不写入配置；退出重启即恢复。搜索跳过被隐藏的同级项及其子树，其他分支仍可查找，更换根目录清空聚焦，聚焦项被删除后清理对应记录。快捷键可用 `[keys] temporary_focus = "F"` 修改，小写 f 仍为设为根目录。
 
 选中文件夹后按 **@（Shift+2）**，输入 `unzip archive.zip` 等命令并 Enter，在当前终端前台执行，显示输出和错误，支持覆盖提示等交互输入。命令结束后 Enter 返回并刷新树，Ctrl+C 可中断命令。`!` 仍在后台执行并写日志；两者都使用所选目录作为工作目录。`[keys] run_foreground = "@"` 可自定义。普通终端不能单独区分 ! 与 Shift+!，因此使用 @ 作为可兼容 TTY 的前台入口。
+
+本地独立仓库位于 `/home/a/Documents/products/filex-win`，远端为 [Azusalina/filex-win](https://github.com/Azusalina/filex-win)。在本目录分别执行 `git add`、`git commit`、`git push`；源码已迁出 `someProducts`，母仓库不再代推本项目。
