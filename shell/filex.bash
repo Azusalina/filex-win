@@ -1,4 +1,4 @@
-# Git Bash: source /c/path/to/win-filex/shell/filex.bash
+# Git Bash: source /c/path/to/filex-win/shell/filex.bash
 filex() {
     local filex_root filex_exe filex_cwd filex_target filex_status
     filex_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)" || return

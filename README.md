@@ -1,4 +1,4 @@
-# win-filex
+# filex-win
 
 ## What is it?
 
@@ -25,9 +25,9 @@ Windows 接口、限制和验证记录见 [description.md](description.md)。
 
 | Shell | 启动 |
 | --- | --- |
-| PowerShell | `& 'C:\path\win-filex\filex.ps1'` |
-| CMD | `C:\path\win-filex\filex.cmd`；批处理内使用 `call` |
-| Git Bash | `source /c/path/win-filex/shell/filex.bash`，然后 `filex`；可将 source 行加入 `~/.bashrc` |
+| PowerShell | `& 'C:\path\filex-win\filex.ps1'` |
+| CMD | `C:\path\filex-win\filex.cmd`；批处理内使用 `call` |
+| Git Bash | `source /c/path/filex-win/shell/filex.bash`，然后 `filex`；可将 source 行加入 `~/.bashrc` |
 
 Git Bash 在 Windows Terminal 中直接运行；传统 mintty 优先自动使用随 Git for Windows 提供的 `winpty`。WSL Bash 请使用 `../filex` 的 Linux 版本。直接执行 `.exe` 也能浏览，但 `x` 会进入子 CMD；使用对应 shell 包装脚本，`x` 才能切换原终端目录。
 
